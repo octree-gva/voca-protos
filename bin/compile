@@ -6,7 +6,6 @@ puts "DECIDIM"
 Dir.chdir('/home/protos/decidim') do
   puts "> prepare"
   FileUtils.mkdir_p("../clients/decidim/ruby") unless Dir.exists? "../clients/decidim/ruby"
-  FileUtils.mkdir_p("../clients/decidim/ruby-server") unless Dir.exists? "../clients/decidim/ruby-server"
   FileUtils.mkdir_p("../clients/decidim/node") unless Dir.exists? "../clients/decidim/node"
   File.open("../clients/VERSION", 'w') { |file| 
     file.write(Time.now.strftime("%s")) 
@@ -15,7 +14,7 @@ Dir.chdir('/home/protos/decidim') do
   Open3.popen3("grpc_tools_ruby_protoc",
     "--ruby_out=../clients/decidim/ruby",
     "--js_out=commonjs,binary:../clients/decidim/node",
-    "--grpc_out=grpc_ruby:../clients/decidim/ruby-server",
+    "--grpc_out=grpc_ruby:../clients/decidim/ruby",
     "./Settings.proto"
   ) do |stdout, stderr, status, thread|
     error_msg = status.read
@@ -32,7 +31,6 @@ Dir.chdir('/home/protos/decidim') do
 end
 puts "> archive"
 Dir.chdir('/home/protos/clients/decidim/ruby'){ %x(tar  cfz  ../../decidim-ruby-client.tar.gz .) }
-Dir.chdir('/home/protos/clients/decidim/ruby-server'){ %x(tar  cfz  ../../decidim-ruby-server.tar.gz .) }
 Dir.chdir('/home/protos/clients/decidim/node'){ %x(tar  cfz  ../../decidim-node-client.tar.gz .) }
 Dir.chdir('/home/protos/decidim'){ %x(tar  cfz  ../clients/decidim-protos.tar.gz .) }
 puts "> done"
@@ -47,6 +45,7 @@ Dir.chdir('/home/protos/system') do
   puts "> compile"
   Open3.popen3("grpc_tools_ruby_protoc",
     "--ruby_out=../clients/system/ruby",
+    "--grpc_out=../clients/system/ruby",
     "./StrapiEvents.proto"
   ) do |stdout, stderr, status, thread|
     error_msg = status.read
