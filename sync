@@ -1,0 +1,7 @@
+#! /bin/bash
+
+docker build --progress=plain -t compile-proto $PWD
+docker create --name compile-proto-binaries compile-proto
+rm -rf ./clients/
+docker cp compile-proto-binaries:/home/protos/clients ./clients/
+docker rm compile-proto-binaries

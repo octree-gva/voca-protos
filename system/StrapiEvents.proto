@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package VocaSystem;
+
+service StrapiEvents {
+    rpc DispatchEvent(StrapiEventReq) returns (StrapiEventResp) { }
+}
+
+enum INFO_LEVEL{
+    DEBUG = 0;
+    INFO = 1;
+    WARN = 2;
+    ERROR = 3;
+}
+enum SAGA{
+    DECIDIM_ASSETS = 0;
+    DECIDIM_SEED = 1;
+    DECIDIM_ADMIN_CREATED = 2;
+    DECIDIM_READY = 3;
+}
+
+message StrapiEventReq {
+    string instanceUUID = 1;
+    INFO_LEVEL level = 2;
+    SAGA saga = 3;
+    string message = 4;
+    string payload = 5;
+}
+
+message StrapiEventResp {
+    bool ok = 1;
+}
+

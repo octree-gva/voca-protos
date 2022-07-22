@@ -1,0 +1,30 @@
+syntax = "proto3";
+package VocaDecidim;
+
+message Empty {}
+
+service Settings {
+    rpc GetSettings(Empty) returns (GetSettingsResp) { }
+    rpc SetBasicSettings(SettingReq) returns (GetSettingsResp) { }
+}
+enum REGISTER_OPTION{
+    REGISTER_AND_LOGIN = 0;
+    LOGIN = 1;
+    EXTERNAL = 2;
+}
+
+message GetSettingsResp {
+    uint64 id =1 ;
+    string title = 2;
+    string host = 3;
+    string defaultLanguage = 4;
+    REGISTER_OPTION registerMode = 5;
+}
+
+
+message SettingReq {
+    string title = 1;
+    string host = 2;
+    string defaultLanguage = 3;
+    REGISTER_OPTION registerMode = 4;
+}
