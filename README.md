@@ -23,13 +23,14 @@ Together, these `.proto` files allow us to generate stubs for both node and ruby
 ## Download the stubs
 
 * Voca Decidim
-  * [protos](clients/decidim-protos.tar.gz)
-  * [ruby server](clients/decidim-ruby-server.tar.gz)
-  * [ruby client](clients/decidim-ruby-client.tar.gz)
-  * [node client](clients/decidim-node-client.tar.gz)
+  * [protos](https://github.com/octree-gva/voca-protos/raw/main/clients/decidim-protos.tar.gz)
+  * [ruby server](https://github.com/octree-gva/voca-protos/raw/main/clients/decidim-ruby-server.tar.gz)
+  * [ruby client](https://github.com/octree-gva/voca-protos/raw/main/clients/decidim-ruby-client.tar.gz)
+  * [node client](https://github.com/octree-gva/voca-protos/raw/main/clients/decidim-node-client.tar.gz)
 * Voca System
-  * [protos](clients/strapi-protos.tar.gz)
-  * [ruby client](clients/strapi-ruby-client.tar.gz)
+  * [protos](https://github.com/octree-gva/voca-protos/raw/main/clients/system-protos.tar.gz)
+  * [ruby client](https://github.com/octree-gva/voca-protos/raw/main/clients/system-ruby-client.tar.gz)
+
 
 ##  Compile the protos
 
