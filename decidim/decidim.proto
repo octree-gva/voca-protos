@@ -1,0 +1,137 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package voca_decidim;
+
+
+service Decidim {
+
+    rpc GetSettings(google.protobuf.Empty) returns (GetSettingsResponse) { }
+    rpc SetSettings(SetSettingsRequest) returns (GetSettingsResponse) { }
+
+    rpc Seed(SeedRequest) returns (SeedResponse) {}
+    rpc CompileAssets(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+    rpc Backup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc ConfigBackup(BackupCredentialsReq) returns (google.protobuf.Empty) {}
+}
+
+// region Settings
+    message GetSettingsResponse {
+        uint64 id = 1 ;
+        optional DecidimOrganizationPermissionSettings permission_settings = 2;
+        optional DecidimOrganizationNamingSettings naming_settings = 3;
+        optional DecidimOrganizationLocaleSettings locale_settings = 4;
+        optional DecidimOrganizationSMTPSettings smtp_settings = 5;
+        optional DecidimOrganizationColorSettings color_settings = 6;
+        optional DecidimOrganizationFileUploadSettings file_upload_settings = 7;
+        optional DecidimOrganizationFeatureFlagSettings feature_settings = 8;
+        google.protobuf.Timestamp created_at = 9;
+    }
+        
+        enum SETTINGS_REGISTER_MODE_OPTION{
+            SETTINGS_REGISTER_MODE_REGISTER_AND_LOGIN = 0;
+            SETTINGS_REGISTER_MODE_LOGIN = 1;
+            SETTINGS_REGISTER_MODE_EXTERNAL = 2;
+        }
+
+        enum SETTINGS_SMTP_AUTHENTICATION_OPTION{
+            SETTINGS_SMTP_AUTHENTICATION_PLAIN = 0;
+            SETTINGS_SMTP_AUTHENTICATION_LOGIN = 1;
+            SETTINGS_SMTP_AUTHENTICATION_CRAM_MD5 = 2;
+            SETTINGS_SMTP_AUTHENTICATION_NONE = 3;
+        }
+        enum SETTINGS_SMTP_OPENSSL_OPTION {
+            SETTINGS_SMTP_OPENSSL_NONE = 0;
+            SETTINGS_SMTP_OPENSSL_PEER = 1;
+        }
+        enum SETTINGS_MACHINE_TRANSLATION_PRIORITY_OPTION{
+            SETTINGS_MACHINE_TRANSLATION_PRIORITY_ORIGINAL = 0;
+            SETTINGS_MACHINE_TRANSLATION_PRIORITY_TRANSLATED = 1;
+        }
+
+        message SetSettingsRequest {
+            optional DecidimOrganizationPermissionSettings permission_settings = 1;
+            optional DecidimOrganizationNamingSettings naming_settings = 2;
+            optional DecidimOrganizationLocaleSettings locale_settings = 3;
+            optional DecidimOrganizationSMTPSettings smtp_settings = 4;
+            optional DecidimOrganizationColorSettings color_settings = 5;
+            optional DecidimOrganizationFileUploadSettings file_upload_settings = 6;
+            optional DecidimOrganizationFeatureFlagSettings feature_settings = 7;
+        }
+
+            message DecidimOrganizationPermissionSettings {
+                optional bool force_users_to_authenticate_before_access_organization = 1;
+                SETTINGS_REGISTER_MODE_OPTION users_registration_mode = 2;
+            }
+            message DecidimOrganizationNamingSettings {
+                string host = 1;
+                repeated string secondary_hosts = 2;
+                string name = 3;
+                string reference_prefix = 4;
+            }
+            message DecidimOrganizationLocaleSettings {
+                string default_locale = 1;
+                repeated string available_locales = 2;
+            }
+            message DecidimOrganizationSMTPSettings {
+                string from_label = 1;
+                string from_email = 2;
+                string address = 3;
+                string port = 4;
+                SETTINGS_SMTP_AUTHENTICATION_OPTION authentication = 5;
+                string username = 6;
+                string password = 7;
+                string domain = 8;
+                bool enable_starttls_auto = 9;
+                SETTINGS_SMTP_OPENSSL_OPTION openssl_verify_mode = 10;
+            }
+            message DecidimOrganizationColorSettings {
+                string alert = 1;
+                string primary = 2;
+                string success = 3;
+                string warning = 4;
+                string highlight = 5;
+                string secondary = 6;
+                string highlight_alternative = 7;
+            }
+            message DecidimOrganizationFileUploadSettings {
+                string maximum_file_size_avatar = 1;
+                string maximum_file_size_default = 2;
+                repeated string allowed_content_types_admin = 3;
+                repeated string allowed_content_types_default = 4;
+                repeated string allowed_file_extensions_admin = 5;
+                repeated string allowed_file_extensions_default = 6;
+            }
+            message DecidimOrganizationFeatureFlagSettings {
+                repeated string available_authorizations = 1;
+                bool badges_enabled = 2;
+                bool user_groups_enabled = 3;
+                bool enable_machine_translations = 4;
+                SETTINGS_MACHINE_TRANSLATION_PRIORITY_OPTION machine_translation_display_priority = 5;
+            }
+
+// region Prepare
+    message SeedRequest{
+        string admin_email= 1;
+        string host= 2;
+        string name= 3;
+        string short_name = 4;
+        string default_locale = 5;
+        string available_locales = 6;
+        string system_email = 7;
+    }
+
+    message SeedResponse {
+        string admin_password = 2;
+        string system_password = 3;
+    }
+
+
+// region Backup
+
+    message BackupCredentialsReq {
+        string cypherKey = 1;
+        string cypherIV = 2;
+    }

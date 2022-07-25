@@ -15,7 +15,7 @@ Dir.chdir('/home/protos/decidim') do
     "--ruby_out=../clients/decidim/ruby",
     "--js_out=commonjs,binary:../clients/decidim/node",
     "--grpc_out=grpc_ruby:../clients/decidim/ruby",
-    "./Settings.proto"
+    "./decidim.proto"
   ) do |stdout, stderr, status, thread|
     error_msg = status.read
     unless error_msg.empty?
@@ -46,7 +46,7 @@ Dir.chdir('/home/protos/system') do
   Open3.popen3("grpc_tools_ruby_protoc",
     "--ruby_out=../clients/system/ruby",
     "--grpc_out=../clients/system/ruby",
-    "./StrapiEvents.proto"
+    "./strapi_events.proto"
   ) do |stdout, stderr, status, thread|
     error_msg = status.read
     unless error_msg.empty?

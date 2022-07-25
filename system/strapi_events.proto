@@ -1,0 +1,30 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package voca_system;
+
+service StrapiEvents {
+    rpc DispatchEvent(StrapiEventRequest) returns (google.protobuf.Empty) { }
+}
+
+// region Event
+    message StrapiEventRequest {
+        string instanceUUID = 1;
+        INFO_LEVEL_OPTION level = 2;
+        SAGA_OPTION saga = 3;
+        string message = 4;
+        string payload = 5;
+    }
+        enum INFO_LEVEL_OPTION{
+            INFO_LEVEL_OPTION_DEBUG = 0;
+            INFO_LEVEL_OPTION_INFO = 1;
+            INFO_LEVEL_OPTION_WARN = 2;
+            INFO_LEVEL_OPTION_ERROR = 3;
+        }
+        enum SAGA_OPTION{
+            SAGA_OPTION_DECIDIM_ASSETS = 0;
+            SAGA_OPTION_DECIDIM_SEED = 1;
+            SAGA_OPTION_DECIDIM_ADMIN_CREATED = 2;
+            SAGA_OPTION_DECIDIM_READY = 3;
+        }
+

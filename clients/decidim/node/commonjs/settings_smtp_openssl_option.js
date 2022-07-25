@@ -1,4 +1,4 @@
-// source: Settings.proto
+// source: decidim.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -11,14 +11,13 @@
 /* eslint-disable */
 // @ts-nocheck
 
-goog.provide('proto.VocaDecidim.REGISTER_OPTION');
+goog.provide('proto.voca_decidim.SETTINGS_SMTP_OPENSSL_OPTION');
 
 /**
  * @enum {number}
  */
-proto.VocaDecidim.REGISTER_OPTION = {
-  REGISTER_AND_LOGIN: 0,
-  LOGIN: 1,
-  EXTERNAL: 2
+proto.voca_decidim.SETTINGS_SMTP_OPENSSL_OPTION = {
+  SETTINGS_SMTP_OPENSSL_NONE: 0,
+  SETTINGS_SMTP_OPENSSL_PEER: 1
 };
 

@@ -1,4 +1,4 @@
-// source: Settings.proto
+// source: decidim.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -11,7 +11,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-goog.provide('proto.VocaDecidim.Empty');
+goog.provide('proto.voca_decidim.BackupCredentialsReq');
 
 goog.require('jspb.BinaryReader');
 goog.require('jspb.BinaryWriter');
@@ -27,16 +27,16 @@ goog.require('jspb.Message');
  * @extends {jspb.Message}
  * @constructor
  */
-proto.VocaDecidim.Empty = function(opt_data) {
+proto.voca_decidim.BackupCredentialsReq = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.VocaDecidim.Empty, jspb.Message);
+goog.inherits(proto.voca_decidim.BackupCredentialsReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.VocaDecidim.Empty.displayName = 'proto.VocaDecidim.Empty';
+  proto.voca_decidim.BackupCredentialsReq.displayName = 'proto.voca_decidim.BackupCredentialsReq';
 }
 
 
@@ -54,8 +54,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.VocaDecidim.Empty.prototype.toObject = function(opt_includeInstance) {
-  return proto.VocaDecidim.Empty.toObject(opt_includeInstance, this);
+proto.voca_decidim.BackupCredentialsReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.voca_decidim.BackupCredentialsReq.toObject(opt_includeInstance, this);
 };
 
 
@@ -64,13 +64,14 @@ proto.VocaDecidim.Empty.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.VocaDecidim.Empty} msg The msg instance to transform.
+ * @param {!proto.voca_decidim.BackupCredentialsReq} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.VocaDecidim.Empty.toObject = function(includeInstance, msg) {
+proto.voca_decidim.BackupCredentialsReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-
+    cypherkey: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    cypheriv: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -84,29 +85,37 @@ proto.VocaDecidim.Empty.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.VocaDecidim.Empty}
+ * @return {!proto.voca_decidim.BackupCredentialsReq}
  */
-proto.VocaDecidim.Empty.deserializeBinary = function(bytes) {
+proto.voca_decidim.BackupCredentialsReq.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.VocaDecidim.Empty;
-  return proto.VocaDecidim.Empty.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.voca_decidim.BackupCredentialsReq;
+  return proto.voca_decidim.BackupCredentialsReq.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.VocaDecidim.Empty} msg The message object to deserialize into.
+ * @param {!proto.voca_decidim.BackupCredentialsReq} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.VocaDecidim.Empty}
+ * @return {!proto.voca_decidim.BackupCredentialsReq}
  */
-proto.VocaDecidim.Empty.deserializeBinaryFromReader = function(msg, reader) {
+proto.voca_decidim.BackupCredentialsReq.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCypherkey(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCypheriv(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -120,9 +129,9 @@ proto.VocaDecidim.Empty.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.VocaDecidim.Empty.prototype.serializeBinary = function() {
+proto.voca_decidim.BackupCredentialsReq.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.VocaDecidim.Empty.serializeBinaryToWriter(this, writer);
+  proto.voca_decidim.BackupCredentialsReq.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -130,12 +139,62 @@ proto.VocaDecidim.Empty.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.VocaDecidim.Empty} message
+ * @param {!proto.voca_decidim.BackupCredentialsReq} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.VocaDecidim.Empty.serializeBinaryToWriter = function(message, writer) {
+proto.voca_decidim.BackupCredentialsReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getCypherkey();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getCypheriv();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string cypherKey = 1;
+ * @return {string}
+ */
+proto.voca_decidim.BackupCredentialsReq.prototype.getCypherkey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.voca_decidim.BackupCredentialsReq} returns this
+ */
+proto.voca_decidim.BackupCredentialsReq.prototype.setCypherkey = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string cypherIV = 2;
+ * @return {string}
+ */
+proto.voca_decidim.BackupCredentialsReq.prototype.getCypheriv = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.voca_decidim.BackupCredentialsReq} returns this
+ */
+proto.voca_decidim.BackupCredentialsReq.prototype.setCypheriv = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
