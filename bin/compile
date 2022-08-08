@@ -63,6 +63,34 @@ puts "> archive"
 Dir.chdir('/home/protos/clients/system/ruby'){ %x(tar  cfz  ../../system-ruby-client.tar.gz .) }
 Dir.chdir('/home/protos/system'){ %x(tar  cfz  ../clients/system-protos.tar.gz .) }
 
+puts "e2e"
+Dir.chdir('/home/protos/e2e') do
+  puts "> prepare"
+  FileUtils.mkdir_p("../clients/e2e/ruby") unless Dir.exists? "../clients/e2e/ruby"
+  File.open("../clients/VERSION", 'w') { |file| 
+    file.write(Time.now.strftime("%s")) 
+  }
+  puts "> compile"
+  Open3.popen3("grpc_tools_ruby_protoc",
+    "--ruby_out=../clients/e2e/ruby",
+    "--grpc_out=../clients/e2e/ruby",
+    "./decidim_healthcheck.proto"
+  ) do |stdout, stderr, status, thread|
+    error_msg = status.read
+    unless error_msg.empty?
+      puts "",  "❌ ERROR", ""
+      error_msg.split("\n").each do |line|
+        puts ("🔴  #{line}") 
+      end
+      puts ""
+      abort error_msg
+    end
+  end
+end
+puts "> archive"
+Dir.chdir('/home/protos/clients/e2e/ruby'){ %x(tar  cfz  ../../e2e-ruby-client.tar.gz .) }
+Dir.chdir('/home/protos/e2e'){ %x(tar  cfz  ../clients/e2e-protos.tar.gz .) }
+
 puts "> done"
 
 puts "",  "✅ COMPILATION SUCCESS ", ""

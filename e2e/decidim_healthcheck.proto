@@ -9,11 +9,11 @@ service HealthcheckEvents {
 
     message HealthcheckEventRequest {
         string instanceUUID = 1;
-        boolean healthy = 2;
+        bool healthy = 2;
         SAGA_OPTION saga = 3;
         ERROR_OPTION error = 4;
         string message = 5;
-        string screenshotURL = 6;
+        string screenshot_url = 6;
     }
         enum SAGA_OPTION{
             SAGA_OPTION_DECIDIM_HEALTHCHECK = 0;
