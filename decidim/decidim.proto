@@ -6,7 +6,6 @@ package voca_decidim;
 
 
 service Decidim {
-
     rpc GetSettings(google.protobuf.Empty) returns (GetSettingsResponse) { }
     rpc SetSettings(SetSettingsRequest) returns (google.protobuf.Empty) { }
 
