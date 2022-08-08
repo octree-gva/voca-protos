@@ -77,8 +77,8 @@ proto.voca_decidim.DecidimOrganizationFileUploadSettings.prototype.toObject = fu
  */
 proto.voca_decidim.DecidimOrganizationFileUploadSettings.toObject = function(includeInstance, msg) {
   var f, obj = {
-    maximumFileSizeAvatar: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    maximumFileSizeDefault: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    maximumFileSizeAvatar: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
+    maximumFileSizeDefault: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
     allowedContentTypesAdminList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
     allowedContentTypesDefaultList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
     allowedFileExtensionsAdminList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
@@ -120,11 +120,11 @@ proto.voca_decidim.DecidimOrganizationFileUploadSettings.deserializeBinaryFromRe
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setMaximumFileSizeAvatar(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readFloat());
       msg.setMaximumFileSizeDefault(value);
       break;
     case 3:
@@ -173,15 +173,15 @@ proto.voca_decidim.DecidimOrganizationFileUploadSettings.prototype.serializeBina
 proto.voca_decidim.DecidimOrganizationFileUploadSettings.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMaximumFileSizeAvatar();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeFloat(
       1,
       f
     );
   }
   f = message.getMaximumFileSizeDefault();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0.0) {
+    writer.writeFloat(
       2,
       f
     );
@@ -218,38 +218,38 @@ proto.voca_decidim.DecidimOrganizationFileUploadSettings.serializeBinaryToWriter
 
 
 /**
- * optional string maximum_file_size_avatar = 1;
- * @return {string}
+ * optional float maximum_file_size_avatar = 1;
+ * @return {number}
  */
 proto.voca_decidim.DecidimOrganizationFileUploadSettings.prototype.getMaximumFileSizeAvatar = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 1, 0.0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.voca_decidim.DecidimOrganizationFileUploadSettings} returns this
  */
 proto.voca_decidim.DecidimOrganizationFileUploadSettings.prototype.setMaximumFileSizeAvatar = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3FloatField(this, 1, value);
 };
 
 
 /**
- * optional string maximum_file_size_default = 2;
- * @return {string}
+ * optional float maximum_file_size_default = 2;
+ * @return {number}
  */
 proto.voca_decidim.DecidimOrganizationFileUploadSettings.prototype.getMaximumFileSizeDefault = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.voca_decidim.DecidimOrganizationFileUploadSettings} returns this
  */
 proto.voca_decidim.DecidimOrganizationFileUploadSettings.prototype.setMaximumFileSizeDefault = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3FloatField(this, 2, value);
 };
 
 

@@ -64,8 +64,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :highlight_alternative, :string, 7
     end
     add_message "voca_decidim.DecidimOrganizationFileUploadSettings" do
-      optional :maximum_file_size_avatar, :string, 1
-      optional :maximum_file_size_default, :string, 2
+      optional :maximum_file_size_avatar, :float, 1
+      optional :maximum_file_size_default, :float, 2
       repeated :allowed_content_types_admin, :string, 3
       repeated :allowed_content_types_default, :string, 4
       repeated :allowed_file_extensions_admin, :string, 5
