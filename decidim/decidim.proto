@@ -8,7 +8,7 @@ package voca_decidim;
 service Decidim {
 
     rpc GetSettings(google.protobuf.Empty) returns (GetSettingsResponse) { }
-    rpc SetSettings(SetSettingsRequest) returns (GetSettingsResponse) { }
+    rpc SetSettings(SetSettingsRequest) returns (google.protobuf.Empty) { }
 
     rpc Seed(SeedRequest) returns (SeedResponse) {}
     rpc CompileAssets(google.protobuf.Empty) returns (google.protobuf.Empty) {}
