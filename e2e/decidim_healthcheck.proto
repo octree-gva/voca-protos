@@ -1,0 +1,29 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package voca_e2e;
+
+service HealthcheckEvents {
+    rpc DispatchEvent(HealthcheckEventRequest) returns (google.protobuf.Empty) { }
+}
+
+    message HealthcheckEventRequest {
+        string instanceUUID = 1;
+        bool healthy = 2;
+        SAGA_OPTION saga = 3;
+        ERROR_OPTION error = 4;
+        string message = 5;
+        string screenshot_url = 6;
+    }
+        enum SAGA_OPTION{
+            SAGA_OPTION_DECIDIM_HEALTHCHECK = 0;
+        }
+
+        enum ERROR_OPTION{
+            ERROR_OPTION_DECIDIM_404 = 0;
+            ERROR_OPTION_DECIDIM_HOMEPAGE = 1;
+            ERROR_OPTION_DECIDIM_CONDITIONS = 2;
+            ERROR_OPTION_DECIDIM_FAQ = 3;
+            ERROR_OPTION_DECIDIM_UNKNOWN = 4;
+        }
+
