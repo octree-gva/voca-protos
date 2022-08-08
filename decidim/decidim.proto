@@ -97,8 +97,8 @@ service Decidim {
                 string highlight_alternative = 7;
             }
             message DecidimOrganizationFileUploadSettings {
-                string maximum_file_size_avatar = 1;
-                string maximum_file_size_default = 2;
+                float maximum_file_size_avatar = 1;
+                float maximum_file_size_default = 2;
                 repeated string allowed_content_types_admin = 3;
                 repeated string allowed_content_types_default = 4;
                 repeated string allowed_file_extensions_admin = 5;
