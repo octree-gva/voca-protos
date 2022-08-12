@@ -9,7 +9,7 @@ service Decidim {
     rpc GetSettings(google.protobuf.Empty) returns (GetSettingsResponse) { }
     rpc SetSettings(SetSettingsRequest) returns (google.protobuf.Empty) { }
 
-    rpc Seed(SeedRequest) returns (SeedResponse) {}
+    rpc Seed(SeedRequest) returns (google.protobuf.Empty) {}
     rpc CompileAssets(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
     rpc Backup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -120,11 +120,7 @@ service Decidim {
         string default_locale = 5;
         string available_locales = 6;
         string system_email = 7;
-    }
-
-    message SeedResponse {
-        string admin_password = 2;
-        string system_password = 3;
+        string system_password = 8;
     }
 
 

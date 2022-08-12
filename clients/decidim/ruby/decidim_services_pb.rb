@@ -16,7 +16,7 @@ module VocaDecidim
 
       rpc :GetSettings, ::Google::Protobuf::Empty, ::VocaDecidim::GetSettingsResponse
       rpc :SetSettings, ::VocaDecidim::SetSettingsRequest, ::Google::Protobuf::Empty
-      rpc :Seed, ::VocaDecidim::SeedRequest, ::VocaDecidim::SeedResponse
+      rpc :Seed, ::VocaDecidim::SeedRequest, ::Google::Protobuf::Empty
       rpc :CompileAssets, ::Google::Protobuf::Empty, ::Google::Protobuf::Empty
       rpc :Backup, ::Google::Protobuf::Empty, ::Google::Protobuf::Empty
       rpc :ConfigBackup, ::VocaDecidim::BackupCredentialsReq, ::Google::Protobuf::Empty

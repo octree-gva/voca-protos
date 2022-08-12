@@ -76,7 +76,8 @@ proto.voca_decidim.SeedRequest.toObject = function(includeInstance, msg) {
     shortName: jspb.Message.getFieldWithDefault(msg, 4, ""),
     defaultLocale: jspb.Message.getFieldWithDefault(msg, 5, ""),
     availableLocales: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    systemEmail: jspb.Message.getFieldWithDefault(msg, 7, "")
+    systemEmail: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    systemPassword: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -140,6 +141,10 @@ proto.voca_decidim.SeedRequest.deserializeBinaryFromReader = function(msg, reade
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setSystemEmail(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSystemPassword(value);
       break;
     default:
       reader.skipField();
@@ -216,6 +221,13 @@ proto.voca_decidim.SeedRequest.serializeBinaryToWriter = function(message, write
   if (f.length > 0) {
     writer.writeString(
       7,
+      f
+    );
+  }
+  f = message.getSystemPassword();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -345,6 +357,24 @@ proto.voca_decidim.SeedRequest.prototype.getSystemEmail = function() {
  */
 proto.voca_decidim.SeedRequest.prototype.setSystemEmail = function(value) {
   return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string system_password = 8;
+ * @return {string}
+ */
+proto.voca_decidim.SeedRequest.prototype.getSystemPassword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.voca_decidim.SeedRequest} returns this
+ */
+proto.voca_decidim.SeedRequest.prototype.setSystemPassword = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
