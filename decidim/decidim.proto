@@ -6,14 +6,14 @@ package voca_decidim;
 
 
 service Decidim {
+    // region/Settings
     rpc GetSettings(google.protobuf.Empty) returns (GetSettingsResponse) { }
     rpc SetSettings(SetSettingsRequest) returns (google.protobuf.Empty) { }
 
-    rpc Seed(SeedRequest) returns (google.protobuf.Empty) {}
+    // region/Seed
     rpc CompileAssets(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-
-    rpc Backup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-    rpc ConfigBackup(BackupCredentialsReq) returns (google.protobuf.Empty) {}
+    rpc SetupDB(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc SeedAdmin(SeedAdminRequest) returns (SeedAdminResponse) {}
 }
 
 // region Settings
@@ -111,22 +111,14 @@ service Decidim {
                 SETTINGS_MACHINE_TRANSLATION_PRIORITY_OPTION machine_translation_display_priority = 5;
             }
 
-// region Prepare
-    message SeedRequest{
+// region Seed
+    message SeedAdminRequest{
         string admin_email= 1;
-        string host= 2;
-        string name= 3;
-        string short_name = 4;
-        string default_locale = 5;
-        string available_locales = 6;
-        string system_email = 7;
-        string system_password = 8;
+        string system_email = 2;
+        string system_password = 3;
     }
 
-
-// region Backup
-
-    message BackupCredentialsReq {
-        string cypherKey = 1;
-        string cypherIV = 2;
+    message SeedAdminResponse {
+        string admin_email = 1;
+        string system_password = 2;
     }
