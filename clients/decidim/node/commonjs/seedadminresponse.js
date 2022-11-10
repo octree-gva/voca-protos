@@ -71,7 +71,7 @@ proto.voca_decidim.SeedAdminResponse.prototype.toObject = function(opt_includeIn
 proto.voca_decidim.SeedAdminResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     adminEmail: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    systemPassword: jspb.Message.getFieldWithDefault(msg, 2, "")
+    adminPassword: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -114,7 +114,7 @@ proto.voca_decidim.SeedAdminResponse.deserializeBinaryFromReader = function(msg,
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSystemPassword(value);
+      msg.setAdminPassword(value);
       break;
     default:
       reader.skipField();
@@ -152,7 +152,7 @@ proto.voca_decidim.SeedAdminResponse.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getSystemPassword();
+  f = message.getAdminPassword();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -181,10 +181,10 @@ proto.voca_decidim.SeedAdminResponse.prototype.setAdminEmail = function(value) {
 
 
 /**
- * optional string system_password = 2;
+ * optional string admin_password = 2;
  * @return {string}
  */
-proto.voca_decidim.SeedAdminResponse.prototype.getSystemPassword = function() {
+proto.voca_decidim.SeedAdminResponse.prototype.getAdminPassword = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -193,7 +193,7 @@ proto.voca_decidim.SeedAdminResponse.prototype.getSystemPassword = function() {
  * @param {string} value
  * @return {!proto.voca_decidim.SeedAdminResponse} returns this
  */
-proto.voca_decidim.SeedAdminResponse.prototype.setSystemPassword = function(value) {
+proto.voca_decidim.SeedAdminResponse.prototype.setAdminPassword = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
