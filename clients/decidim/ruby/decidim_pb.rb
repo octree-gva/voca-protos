@@ -85,7 +85,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "voca_decidim.SeedAdminResponse" do
       optional :admin_email, :string, 1
-      optional :system_password, :string, 2
+      optional :admin_password, :string, 2
     end
     add_enum "voca_decidim.SETTINGS_REGISTER_MODE_OPTION" do
       value :SETTINGS_REGISTER_MODE_REGISTER_AND_LOGIN, 0

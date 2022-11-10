@@ -120,5 +120,5 @@ service Decidim {
 
     message SeedAdminResponse {
         string admin_email = 1;
-        string system_password = 2;
+        string admin_password = 2;
     }
