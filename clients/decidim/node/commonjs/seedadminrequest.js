@@ -11,7 +11,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-goog.provide('proto.voca_decidim.BackupCredentialsReq');
+goog.provide('proto.voca_decidim.SeedAdminRequest');
 
 goog.require('jspb.BinaryReader');
 goog.require('jspb.BinaryWriter');
@@ -27,16 +27,16 @@ goog.require('jspb.Message');
  * @extends {jspb.Message}
  * @constructor
  */
-proto.voca_decidim.BackupCredentialsReq = function(opt_data) {
+proto.voca_decidim.SeedAdminRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.voca_decidim.BackupCredentialsReq, jspb.Message);
+goog.inherits(proto.voca_decidim.SeedAdminRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.voca_decidim.BackupCredentialsReq.displayName = 'proto.voca_decidim.BackupCredentialsReq';
+  proto.voca_decidim.SeedAdminRequest.displayName = 'proto.voca_decidim.SeedAdminRequest';
 }
 
 
@@ -54,8 +54,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.voca_decidim.BackupCredentialsReq.prototype.toObject = function(opt_includeInstance) {
-  return proto.voca_decidim.BackupCredentialsReq.toObject(opt_includeInstance, this);
+proto.voca_decidim.SeedAdminRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.voca_decidim.SeedAdminRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -64,14 +64,15 @@ proto.voca_decidim.BackupCredentialsReq.prototype.toObject = function(opt_includ
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.voca_decidim.BackupCredentialsReq} msg The msg instance to transform.
+ * @param {!proto.voca_decidim.SeedAdminRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.voca_decidim.BackupCredentialsReq.toObject = function(includeInstance, msg) {
+proto.voca_decidim.SeedAdminRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    cypherkey: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    cypheriv: jspb.Message.getFieldWithDefault(msg, 2, "")
+    adminEmail: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    systemEmail: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    systemPassword: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -85,23 +86,23 @@ proto.voca_decidim.BackupCredentialsReq.toObject = function(includeInstance, msg
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.voca_decidim.BackupCredentialsReq}
+ * @return {!proto.voca_decidim.SeedAdminRequest}
  */
-proto.voca_decidim.BackupCredentialsReq.deserializeBinary = function(bytes) {
+proto.voca_decidim.SeedAdminRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.voca_decidim.BackupCredentialsReq;
-  return proto.voca_decidim.BackupCredentialsReq.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.voca_decidim.SeedAdminRequest;
+  return proto.voca_decidim.SeedAdminRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.voca_decidim.BackupCredentialsReq} msg The message object to deserialize into.
+ * @param {!proto.voca_decidim.SeedAdminRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.voca_decidim.BackupCredentialsReq}
+ * @return {!proto.voca_decidim.SeedAdminRequest}
  */
-proto.voca_decidim.BackupCredentialsReq.deserializeBinaryFromReader = function(msg, reader) {
+proto.voca_decidim.SeedAdminRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -110,11 +111,15 @@ proto.voca_decidim.BackupCredentialsReq.deserializeBinaryFromReader = function(m
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCypherkey(value);
+      msg.setAdminEmail(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCypheriv(value);
+      msg.setSystemEmail(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSystemPassword(value);
       break;
     default:
       reader.skipField();
@@ -129,9 +134,9 @@ proto.voca_decidim.BackupCredentialsReq.deserializeBinaryFromReader = function(m
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.voca_decidim.BackupCredentialsReq.prototype.serializeBinary = function() {
+proto.voca_decidim.SeedAdminRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.voca_decidim.BackupCredentialsReq.serializeBinaryToWriter(this, writer);
+  proto.voca_decidim.SeedAdminRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -139,23 +144,30 @@ proto.voca_decidim.BackupCredentialsReq.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.voca_decidim.BackupCredentialsReq} message
+ * @param {!proto.voca_decidim.SeedAdminRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.voca_decidim.BackupCredentialsReq.serializeBinaryToWriter = function(message, writer) {
+proto.voca_decidim.SeedAdminRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCypherkey();
+  f = message.getAdminEmail();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getCypheriv();
+  f = message.getSystemEmail();
   if (f.length > 0) {
     writer.writeString(
       2,
+      f
+    );
+  }
+  f = message.getSystemPassword();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
       f
     );
   }
@@ -163,38 +175,56 @@ proto.voca_decidim.BackupCredentialsReq.serializeBinaryToWriter = function(messa
 
 
 /**
- * optional string cypherKey = 1;
+ * optional string admin_email = 1;
  * @return {string}
  */
-proto.voca_decidim.BackupCredentialsReq.prototype.getCypherkey = function() {
+proto.voca_decidim.SeedAdminRequest.prototype.getAdminEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.voca_decidim.BackupCredentialsReq} returns this
+ * @return {!proto.voca_decidim.SeedAdminRequest} returns this
  */
-proto.voca_decidim.BackupCredentialsReq.prototype.setCypherkey = function(value) {
+proto.voca_decidim.SeedAdminRequest.prototype.setAdminEmail = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional string cypherIV = 2;
+ * optional string system_email = 2;
  * @return {string}
  */
-proto.voca_decidim.BackupCredentialsReq.prototype.getCypheriv = function() {
+proto.voca_decidim.SeedAdminRequest.prototype.getSystemEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.voca_decidim.BackupCredentialsReq} returns this
+ * @return {!proto.voca_decidim.SeedAdminRequest} returns this
  */
-proto.voca_decidim.BackupCredentialsReq.prototype.setCypheriv = function(value) {
+proto.voca_decidim.SeedAdminRequest.prototype.setSystemEmail = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string system_password = 3;
+ * @return {string}
+ */
+proto.voca_decidim.SeedAdminRequest.prototype.getSystemPassword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.voca_decidim.SeedAdminRequest} returns this
+ */
+proto.voca_decidim.SeedAdminRequest.prototype.setSystemPassword = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
