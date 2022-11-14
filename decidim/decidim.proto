@@ -12,7 +12,7 @@ service Decidim {
 
     // region/Seed
     rpc CompileAssets(google.protobuf.Empty) returns (google.protobuf.Empty) {}
-    rpc SetupDB(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc SetupDb(google.protobuf.Empty) returns (google.protobuf.Empty) {}
     rpc SeedAdmin(SeedAdminRequest) returns (SeedAdminResponse) {}
 }
 
