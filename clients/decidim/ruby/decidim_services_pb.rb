@@ -19,7 +19,7 @@ module VocaDecidim
       rpc :SetSettings, ::VocaDecidim::SetSettingsRequest, ::Google::Protobuf::Empty
       # region/Seed
       rpc :CompileAssets, ::Google::Protobuf::Empty, ::Google::Protobuf::Empty
-      rpc :SetupDB, ::Google::Protobuf::Empty, ::Google::Protobuf::Empty
+      rpc :SetupDb, ::Google::Protobuf::Empty, ::Google::Protobuf::Empty
       rpc :SeedAdmin, ::VocaDecidim::SeedAdminRequest, ::VocaDecidim::SeedAdminResponse
     end
 
