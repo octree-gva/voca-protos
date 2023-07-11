@@ -78,7 +78,9 @@ proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.toObject = functi
 proto.voca_decidim.DecidimOrganizationLocaleSettings.toObject = function(includeInstance, msg) {
   var f, obj = {
     defaultLocale: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    availableLocalesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+    availableLocalesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    currencyUnit: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    timezone: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -123,6 +125,14 @@ proto.voca_decidim.DecidimOrganizationLocaleSettings.deserializeBinaryFromReader
       var value = /** @type {string} */ (reader.readString());
       msg.addAvailableLocales(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCurrencyUnit(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTimezone(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -163,6 +173,20 @@ proto.voca_decidim.DecidimOrganizationLocaleSettings.serializeBinaryToWriter = f
   if (f.length > 0) {
     writer.writeRepeatedString(
       2,
+      f
+    );
+  }
+  f = message.getCurrencyUnit();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getTimezone();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -221,6 +245,42 @@ proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.addAvailableLocal
  */
 proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.clearAvailableLocalesList = function() {
   return this.setAvailableLocalesList([]);
+};
+
+
+/**
+ * optional string currency_unit = 3;
+ * @return {string}
+ */
+proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.getCurrencyUnit = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.voca_decidim.DecidimOrganizationLocaleSettings} returns this
+ */
+proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.setCurrencyUnit = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string timezone = 4;
+ * @return {string}
+ */
+proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.getTimezone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.voca_decidim.DecidimOrganizationLocaleSettings} returns this
+ */
+proto.voca_decidim.DecidimOrganizationLocaleSettings.prototype.setTimezone = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

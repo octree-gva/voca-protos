@@ -73,6 +73,8 @@ service Decidim {
             message DecidimOrganizationLocaleSettings {
                 string default_locale = 1;
                 repeated string available_locales = 2;
+                string currency_unit = 3;
+                string timezone = 4;
             }
             message DecidimOrganizationSMTPSettings {
                 string from_label = 1;
